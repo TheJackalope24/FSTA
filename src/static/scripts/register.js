@@ -1,11 +1,18 @@
-
-const url = "http://127.0.0.1:5000/";
+const url = "http://127.0.0.1:5000/register";
 
 function clearNotice(){
     customError.innerHTML = "";
 }
 
-async function postLogin(data) {
+function validate_password(pass, confirm){
+    if(pass != confirm){
+        customError.innerHTML = "passwords don't match";
+        return false;
+    }
+    return true;
+}
+
+async function createAccount(data) {
     // Default options are marked with *
     const response = await fetch(url, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -21,24 +28,25 @@ async function postLogin(data) {
       body: JSON.stringify(data) // body data type must match "Content-Type" header
     });
     return response.json(); // parses JSON response into native JavaScript objects
-}
+  }
   
 
-function login(){
+function registerAccount(){
 
     var username = document.getElementById("username").value;
     var password = document.getElementById("password").value;
+    var confirm_password = document.getElementById("confirm_password").value;
+    var apikey = document.getElementById("apikey").value;
     var customError = document.getElementById("customError");
     
     
     clearNotice();
-    
-    postLogin({"username":username, "password": password})
-        .then(data => {
-            console.log(data);
-            if(data["login"]==="invalid"){
-                customError.innerHTML = "Invalid Login"
-            }
-        });
-    
+    if(validate_password(password, confirm_password)){
+        createAccount({"username":username, "password": password, "apikey":apikey})
+            .then(data => {
+                if(data["success"] === "true"){
+                    window.location.href = '/';
+                }
+            });
+    }
 }
