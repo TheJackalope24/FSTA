@@ -35,9 +35,11 @@ function login(){
     
     postLogin({"username":username, "password": password})
         .then(data => {
-            console.log(data);
             if(data["login"]==="invalid"){
                 customError.innerHTML = "Invalid Login"
+            }
+            else if(data["login"]==="valid"){
+                window.location.replace('/dashboard/' + username);
             }
         });
     

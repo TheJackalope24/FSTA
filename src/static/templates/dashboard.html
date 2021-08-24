@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FSTA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static',filename='styles/dashboard.css') }}"/>
+</head>
+<body>
+    <form class="example" style="margin:auto;max-width:600px">
+        <input type="text" placeholder="Search For Any Stock Symbol..." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    <!-- TradingView Widget BEGIN -->
+<div id="ticker" class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+    "symbols": [
+      {
+        "proName": "FOREXCOM:SPXUSD",
+        "title": "S&P 500"
+      },
+      {
+        "proName": "FOREXCOM:NSXUSD",
+        "title": "Nasdaq 100"
+      },
+      {
+        "description": "DOW Average",
+        "proName": "TVC:DJI"
+      },
+      {
+        "description": "BTC/USD",
+        "proName": "COINBASE:BTCUSD"
+      },
+      {
+        "description": "EUR/USD",
+        "proName": "OANDA:EURUSD"
+      },
+      {
+        "description": "Russell 2000",
+        "proName": "TVC:RUT"
+      }
+    ],
+    "showSymbolLogo": true,
+    "colorTheme": "dark",
+    "isTransparent": false,
+    "displayMode": "adaptive",
+    "locale": "en"
+  }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+<div class="newsfeed">
+    <a class="fx-widget" data-widget="newsfeed" data-lang="en" data-post-date-color="#ffffff" data-post-description-color="#ffffff" data-post-title-color="#ffffff" data-widget-bg-color="#1e1b1b" data-show-image data-width="1500" data-height="855" data-show-date data-title-font-size="18" data-intro-font-size="16" data-category="news" data-section="all" data-base-url="https://www.fxempire.com" data-url="//www.fxempire.com" href="https://www.fxempire.com" rel="nofollow" style="font-family:Helvetica;font-size:16px;line-height:1.5;text-decoration:none;"> <span style="color:#999999;display:inline-block;margin-top:10px;font-size:12px;">Powered By </span> <img style="width:87px; height:14px;" src="https://www.fxempire.com/logo-full.svg" alt="FX Empire logo" /> </a> <script async charset="utf-8" src="https://widgets.fxempire.com/widget.js" ></script>
+</div>
+
+    <script src="{{url_for('static', filename='scripts/dashboard.js')}}"></script>
+</body>

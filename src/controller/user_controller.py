@@ -19,3 +19,7 @@ def register():
     elif(request.method == "POST"):
         return(user_service.register(request.get_json()))
         
+@flask_app.route("/dashboard/<username>", methods=["GET"])
+def dashboard(username):
+    if(request.method == "GET"):
+        return(render_template("dashboard.html"))
