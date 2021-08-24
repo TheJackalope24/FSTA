@@ -7,4 +7,4 @@ from flask import Flask
 # to determine whether the current script is being run on its own or being imported somewhere else. If
 # a module is being directly run, __name__ evaluates to __main__.
 
-flask_app = Flask(__name__, template_folder="static/template", static_folder="static")
+flask_app = Flask(__name__, template_folder="static/templates", static_folder="static")
